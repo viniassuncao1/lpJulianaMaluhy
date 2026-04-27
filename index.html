@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dra. Juliana Maluhy Magnino | Fisioterapia Especializada – Brasília</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --ivory: #f8f5ef;
+            --cream: #ede9df;
+            --white: #ffffff;
+            --navy: #0c1e38;
+            --navy-mid: #1a3461;
+            --teal: #1a7a8a;
+            --teal-light: #89ebfd;
+            --gold: #c9a050;
+            --text: #1c1c1e;
+            --muted: #71767e;
+            --border: rgba(0, 0, 0, 0.07);
+            --border-w: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--ivory);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* grain */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 180px;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(248, 245, 239, 0.94);
+            backdrop-filter: blur(16px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5vw;
+            height: 64px;
+            border-bottom: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .nav-logo span {
+            color: var(--teal);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--navy);
+        }
+
+        .nav-cta {
+            background: var(--navy);
+            color: var(--ivory);
+            padding: 0.55rem 1.4rem;
+            border-radius: 1px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            background: var(--teal);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--navy);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            background: var(--ivory);
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-top: 64px;
+            overflow: hidden;
+        }
+
+        .hero-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 44%;
+            height: 100%;
+            background: var(--cream);
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 5vw;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--teal);
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: su 0.7s ease forwards 0.05s;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--teal);
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(3rem, 5.8vw, 5.2rem);
+            line-height: 1.04;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero-line-inner {
+            display: block;
+            opacity: 0;
+            transform: translateY(105%);
+            animation: lr 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .hero-line:nth-child(1) .hero-line-inner {
+            animation-delay: 0.1s;
+        }
+
+        .hero-line:nth-child(2) .hero-line-inner {
+            animation-delay: 0.26s;
+        }
+
+        .hero-line:nth-child(3) .hero-line-inner {
+            animation-delay: 0.42s;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--teal);
+        }
+
+        .hero-sub {
+            font-size: 0.95rem;
+            line-height: 1.88;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            opacity: 0;
+            animation: su 0.8s ease forwards 0.66s;
+        }
+
+        .hero-sub strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: su 0.8s ease forwards 0.82s;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--ivory);
+            padding: 0.9rem 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--teal);
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            border: 1px solid rgba(12, 30, 56, 0.22);
+            color: var(--navy);
+            padding: 0.9rem 2rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 1px;
+            transition: all 0.2s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--navy);
+            background: rgba(12, 30, 56, 0.04);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+            opacity: 0;
+            animation: su 0.8s ease forwards 1s;
+        }
+
+        .hero-stat-num {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.9rem;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 0.67rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            margin-top: 0.25rem;
+            text-transform: uppercase;
+        }
+
+        .hero-image-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: su 0.9s ease forwards 0.3s;
+        }
+
+        .hero-photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .hero-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -18px;
+            right: -18px;
+            bottom: 18px;
+            left: 18px;
+            border: 1px solid rgba(26, 122, 138, 0.22);
+            z-index: 0;
+        }
+
+        .hero-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: 1px;
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-card {
+            position: absolute;
+            bottom: -18px;
+            left: -22px;
+            background: var(--navy);
+            color: white;
+            padding: 1.3rem 1.7rem;
+            border-radius: 1px;
+            max-width: 190px;
+            z-index: 2;
+        }
+
+        .hero-card-stat {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.3rem;
+            line-height: 1;
+            color: var(--teal-light);
+        }
+
+        .hero-card p {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+            margin-top: 0.35rem;
+        }
+
+        /* KEYFRAMES */
+        @keyframes lr {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes su {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* SECTION BASE */
+        section {
+            padding: 7rem 5vw;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--teal);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--teal);
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            line-height: 1.1;
+            color: var(--navy);
+            font-weight: 400;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--teal);
+        }
+
+        /* SOBRE */
+        #sobre {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .about-img-col {
+            position: relative;
+        }
+
+        .about-img-frame {
+            position: relative;
+            overflow: visible;
+        }
+
+        .about-img-frame::after {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            right: -14px;
+            width: 55%;
+            height: 55%;
+            border: 1px solid rgba(26, 122, 138, 0.28);
+            pointer-events: none;
+        }
+
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 1px;
+            background: var(--cream);
+            display: block;
+        }
+
+        .about-badge-overlay {
+            position: absolute;
+            top: 2rem;
+            left: -1.8rem;
+            background: var(--navy);
+            color: white;
+            padding: 1.2rem 1.6rem;
+            border-radius: 1px;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            line-height: 1.6;
+        }
+
+        .about-badge-overlay strong {
+            display: block;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--teal-light);
+            margin-bottom: 0.2rem;
+        }
+
+        .about-content {
+            padding-top: 0.5rem;
+        }
+
+        .about-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--navy);
+            font-weight: 400;
+            margin: 1rem 0 0.4rem;
+            line-height: 1.1;
+        }
+
+        .about-crefito {
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            color: var(--teal);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .about-text {
+            font-size: 0.97rem;
+            line-height: 1.9;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .about-text strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .about-specialties {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-top: 2rem;
+        }
+
+        .specialty-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .specialty-tag::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background: var(--teal);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .about-education {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .about-education h4 {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .edu-item {
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .edu-item span {
+            color: var(--muted);
+        }
+
+        /* TRATAMENTOS */
+        #tratamentos {
+            background: var(--ivory);
+        }
+
+        .treatments-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: end;
+            margin-bottom: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .treatments-header p {
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 0.95rem;
+            align-self: end;
+        }
+
+        .treatments-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .treatment-item {
+            display: grid;
+            grid-template-columns: 72px 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+            padding: 2.8rem 0;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+            cursor: default;
+        }
+
+        .treatment-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .treatment-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--cream);
+            opacity: 0;
+            transition: opacity 0.3s;
+            margin: 0 -5vw;
+        }
+
+        .treatment-item:hover::before {
+            opacity: 1;
+        }
+
+        .treat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 300;
+            color: rgba(0, 0, 0, 0.07);
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s;
+        }
+
+        .treatment-item:hover .treat-num {
+            color: rgba(26, 122, 138, 0.18);
+        }
+
+        .treat-main {
+            position: relative;
+            z-index: 1;
+        }
+
+        .treatment-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(26, 122, 138, 0.07);
+            border-radius: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .treatment-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--teal);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .treatment-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .treat-detail {
+            position: relative;
+            z-index: 1;
+        }
+
+        .treatment-desc {
+            font-size: 0.88rem;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 1.2rem;
+        }
+
+        .treatment-conditions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .condition-tag {
+            font-size: 0.66rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            background: rgba(26, 122, 138, 0.06);
+            color: var(--teal);
+            padding: 0.28rem 0.65rem;
+            border-radius: 1px;
+            border: 1px solid rgba(26, 122, 138, 0.12);
+        }
+
+        /* CONDIÇÕES */
+        #condicoes {
+            background: var(--cream);
+        }
+
+        .conditions-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .conditions-header .section-label {
+            justify-content: center;
+        }
+
+        .conditions-header .section-label::before {
+            display: none;
+        }
+
+        .conditions-header p {
+            margin-top: 1rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .conditions-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .condition-pill {
+            background: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--navy);
+            font-size: 0.8rem;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: default;
+        }
+
+        .condition-pill:hover,
+        .condition-pill.highlight {
+            background: var(--navy);
+            color: var(--ivory);
+            border-color: var(--navy);
+        }
+
+        /* DIFERENCIAIS */
+        #diferenciais {
+            background: var(--navy);
+        }
+
+        .diff-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: end;
+            margin-bottom: 5rem;
+        }
+
+        .diff-header .section-label {
+            color: var(--teal-light);
+        }
+
+        .diff-header .section-label::before {
+            background: var(--teal-light);
+        }
+
+        .diff-header .section-title {
+            color: var(--white);
+        }
+
+        .diff-header .section-title em {
+            color: var(--teal-light);
+        }
+
+        .diff-header p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.4);
+            align-self: end;
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid var(--border-w);
+        }
+
+        .diff-card {
+            padding: 3rem 2rem;
+            border-right: 1px solid var(--border-w);
+            position: relative;
+            transition: background 0.2s;
+        }
+
+        .diff-card:last-child {
+            border-right: none;
+        }
+
+        .diff-card:hover {
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .diff-bg-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.04);
+            line-height: 1;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.2rem;
+            pointer-events: none;
+        }
+
+        .diff-icon {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(137, 235, 253, 0.2);
+            border-radius: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .diff-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--teal-light);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .diff-stat {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            color: var(--teal-light);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+
+        .diff-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.8rem;
+        }
+
+        .diff-desc {
+            font-size: 0.8rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        /* DEPOIMENTOS */
+        #depoimentos {
+            background: var(--ivory);
+        }
+
+        .testimonials-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: end;
+            margin-bottom: 4rem;
+        }
+
+        .testimonials-header p {
+            font-size: 0.95rem;
+            color: var(--muted);
+            line-height: 1.8;
+            align-self: end;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.4rem;
+            border-radius: 1px;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .testimonial-card.featured-t {
+            background: var(--navy);
+            border-color: transparent;
+        }
+
+        .quote-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: rgba(26, 122, 138, 0.1);
+            line-height: 0.8;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .testimonial-card.featured-t .quote-mark {
+            color: rgba(137, 235, 253, 0.1);
+        }
+
+        .stars {
+            display: flex;
+            gap: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .star {
+            color: #c9a050;
+            font-size: 0.8rem;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.75;
+            color: var(--navy);
+            font-style: italic;
+            margin-bottom: 1.8rem;
+        }
+
+        .testimonial-card.featured-t .testimonial-text {
+            color: rgba(255, 255, 255, 0.82);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .author-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--navy);
+            flex-shrink: 0;
+        }
+
+        .testimonial-card.featured-t .author-avatar {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+        }
+
+        .author-name {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .testimonial-card.featured-t .author-name {
+            color: var(--teal-light);
+        }
+
+        .author-label {
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+
+        .testimonial-card.featured-t .author-label {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .rating-bar {
+            margin-top: 2.5rem;
+            padding: 2rem 2.5rem;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 1px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .rating-score {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .rating-detail .stars {
+            margin-bottom: 0.3rem;
+        }
+
+        .rating-detail p {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .rating-source {
+            font-size: 0.67rem;
+            color: var(--teal);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* LOCALIZAÇÃO */
+        #localizacao {
+            background: var(--white);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .location-info h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: var(--navy);
+            margin-bottom: 1.8rem;
+            font-weight: 400;
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.4rem;
+            font-size: 0.88rem;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .location-detail-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(26, 122, 138, 0.07);
+            border-radius: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .location-detail-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--teal);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .location-map {
+            height: 360px;
+            border-radius: 1px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(15%);
+        }
+
+        /* CTA */
+        #cta {
+            background: var(--navy);
+            padding: 5rem 5vw;
+        }
+
+        .cta-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            border: 1px solid rgba(137, 235, 253, 0.12);
+            border-radius: 2px;
+            padding: 4.5rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-inner::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(26, 122, 138, 0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-text h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 3.2vw, 2.8rem);
+            color: var(--white);
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+            line-height: 1.15;
+        }
+
+        .cta-text h2 em {
+            font-style: italic;
+            color: var(--teal-light);
+        }
+
+        .cta-text p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.42);
+            line-height: 1.7;
+        }
+
+        .cta-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 230px;
+            align-items: flex-end;
+        }
+
+        .cta-wpp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 1.8rem;
+            border-radius: 1px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .cta-wpp:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .cta-wpp svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .cta-phone {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.32);
+            text-align: right;
+        }
+
+        .cta-phone a {
+            color: var(--teal-light);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #08121f;
+            padding: 3.5rem 5vw 2.5rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 3rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--teal-light);
+        }
+
+        .footer-tagline {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.28);
+            line-height: 1.8;
+        }
+
+        footer h5 {
+            font-size: 0.66rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.32);
+            margin-bottom: 1.2rem;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 0.55rem;
+        }
+
+        footer a {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.42);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--teal-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.18);
+        }
+
+        /* WPP FLOAT */
+        .wpp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 200;
+            background: #25D366;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+            text-decoration: none;
+            transition: all 0.25s;
+            animation: wppP 3s ease-in-out infinite;
+        }
+
+        .wpp-float:hover {
+            transform: scale(1.08);
+        }
+
+        .wpp-float svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        @keyframes wppP {
+
+            0%,
+            100% {
+                box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+            }
+
+            50% {
+                box-shadow: 0 6px 38px rgba(37, 211, 102, 0.55);
+            }
+        }
+
+        /* FADE UP */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* PLANOS DE SAÚDE */
+        #planos { background: var(--white); }
+
+        .planos-header { max-width: 620px; margin-bottom: 3rem; }
+
+        .planos-header p {
+            margin-top: 1rem;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .planos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .plano-item {
+            background: var(--white);
+            padding: 1.5rem 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: background 0.2s;
+        }
+
+        .plano-item:hover { background: var(--ivory); }
+
+        .plano-check {
+            width: 22px; height: 22px;
+            border: 1.5px solid rgba(26,122,138,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .plano-check svg {
+            width: 10px; height: 10px;
+            stroke: var(--teal);
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .plano-name {
+            font-size: 0.84rem;
+            font-weight: 500;
+            color: var(--navy);
+            line-height: 1.35;
+        }
+
+        .planos-note {
+            font-size: 0.78rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .planos-note::before {
+            content: '';
+            width: 4px; height: 4px;
+            background: var(--teal);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* GALERIA */
+        #galeria { background: var(--cream); overflow: hidden; }
+
+        .gallery-header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: end;
+            margin-bottom: 2.5rem;
+        }
+
+        .gallery-controls { display: flex; gap: 0.6rem; align-items: center; }
+
+        .gallery-btn {
+            width: 44px; height: 44px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            border-radius: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .gallery-btn:hover { background: var(--navy); border-color: var(--navy); }
+        .gallery-btn:hover svg { stroke: white; }
+
+        .gallery-btn svg {
+            width: 18px; height: 18px;
+            stroke: var(--navy);
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .gallery-track-wrapper { overflow: hidden; margin: 0 -5vw; }
+
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            padding: 0 5vw;
+            transition: transform 0.5s cubic-bezier(0.25,1,0.5,1);
+            will-change: transform;
+        }
+
+        .gallery-slide {
+            flex-shrink: 0;
+            width: calc((100% - 3rem) / 3);
+            aspect-ratio: 4/3;
+            border-radius: 1px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-slide:hover img { transform: scale(1.04); }
+
+        .gallery-placeholder {
+            width: 100%; height: 100%;
+            background: linear-gradient(140deg, var(--navy-mid) 0%, var(--navy) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            padding: 1.8rem;
+            gap: 0.4rem;
+        }
+
+        .gallery-placeholder-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.06);
+            line-height: 1;
+        }
+
+        .gallery-placeholder-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.25);
+        }
+
+        .gallery-dots {
+            display: flex;
+            gap: 0.45rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .gallery-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.25s;
+            border: none;
+            padding: 0;
+        }
+
+        .gallery-dot.active {
+            background: var(--teal);
+            width: 22px;
+            border-radius: 3px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image-col {
+                display: none;
+            }
+
+            .hero-panel {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-img-col {
+                max-width: 380px;
+            }
+
+            .about-badge-overlay {
+                display: none;
+            }
+
+            .treatments-header {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .treatment-item {
+                grid-template-columns: 56px 1fr;
+                gap: 1.5rem;
+            }
+
+            .treat-detail {
+                grid-column: 2;
+            }
+
+            .diff-header {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .diff-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .diff-card {
+                border-bottom: 1px solid var(--border-w);
+            }
+
+            .planos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-header {
+                grid-template-columns: 1fr auto;
+            }
+
+            .gallery-slide {
+                width: calc((100% - 1.5rem) / 2);
+            }
+
+            .testimonials-header {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-inner {
+                grid-template-columns: 1fr;
+                padding: 3rem 2.5rem;
+            }
+
+            .cta-actions {
+                align-items: flex-start;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            section {
+                padding: 4.5rem 1.4rem;
+            }
+
+            .treatment-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .treat-num {
+                font-size: 2.5rem;
+            }
+
+            .treat-detail {
+                grid-column: 1;
+            }
+
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .planos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .plano-item { padding: 1.2rem 1rem; }
+
+            .gallery-slide {
+                width: calc(100% - 3rem);
+            }
+
+            .gallery-header {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .diff-card {
+                border-right: none;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-inner {
+                padding: 2rem 1.4rem;
+            }
+
+            .cta-inner {
+                padding: 2.5rem 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav id="nav">
+        <a href="#" class="nav-logo">Dra. Juliana <span>Maluhy</span></a>
+        <ul class="nav-links">
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#tratamentos">Tratamentos</a></li>
+            <li><a href="#depoimentos">Pacientes</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+        </ul>
+        <a href="https://wa.me/5561982918100" target="_blank" class="nav-cta">Agendar Consulta</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-panel"></div>
+        <div class="hero-inner">
+            <div class="hero-text-col">
+                <div class="hero-badge">Fisioterapia Especializada · Brasília</div>
+                <h1>
+                    <span class="hero-line"><span class="hero-line-inner">Seu corpo</span></span>
+                    <span class="hero-line"><span class="hero-line-inner">não foi feito</span></span>
+                    <span class="hero-line"><span class="hero-line-inner"><em>pra doer.</em></span></span>
+                </h1>
+                <p class="hero-sub">
+                    Especialista em RPG Souchard, Disfunções da ATM e Neurociência do Movimento. Mais de 20 anos
+                    devolvendo mobilidade, alívio e qualidade de vida tratando a <strong>causa</strong>, não o sintoma.
+                </p>
+                <div class="hero-btns">
+                    <a href="https://wa.me/5561982918100" target="_blank" class="btn-primary">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        Agendar via WhatsApp
+                    </a>
+                    <a href="#tratamentos" class="btn-ghost">Conhecer tratamentos</a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="hero-stat-num">20+</div>
+                        <div class="hero-stat-label">Anos de experiência</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-num">3</div>
+                        <div class="hero-stat-label">Especialidades</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-num">RPG</div>
+                        <div class="hero-stat-label">Membro SBRPG</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image-col">
+                <div class="hero-photo-frame">
+                    <img src="fotodaJuliana.jpeg" alt="Dra. Juliana Maluhy Magnino" class="hero-photo-placeholder"
+                        style="object-fit:cover;" />
+                    <div class="hero-card">
+                        <div class="hero-card-stat">20+</div>
+                        <p>anos devolvendo qualidade de vida</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+        <div class="container">
+            <div class="about-grid fade-up">
+                <div class="about-img-col">
+                    <div class="about-img-frame">
+                        <img src="fotodoisjuliana.png" alt="Dra. Juliana Maluhy Magnino" class="about-photo" />
+                    </div>
+                    <div class="about-badge-overlay">
+                        <strong>Crefito 30758-F</strong>
+                        Membro da SBRPG
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="section-label">Sobre a especialista</div>
+                    <div class="about-name">Dra. Juliana Maluhy Magnino</div>
+                    <div class="about-crefito">Fisioterapeuta &amp; Dermatofuncional · Crefito: 30758-F · Membro SBRPG
+                    </div>
+                    <p class="about-text">
+                        Profissional formada há mais de 20 anos, com especialização no <strong>Método RPG
+                            Souchard</strong>, tratamento das <strong>disfunções temporomandibulares (ATM)</strong> e
+                        pós-graduação em <strong>Acupuntura e Neurociência do Movimento</strong>.
+                    </p>
+                    <p class="about-text">
+                        Sua abordagem integra a precisão da RPG com o olhar neurológico e funcional, oferecendo soluções
+                        definitivas para dores crônicas e disfunções complexas. Cada sessão trata o corpo como uma
+                        unidade não apenas a queixa pontual.
+                    </p>
+                    <p class="about-text">
+                        Fala <strong>Português, Inglês, Italiano e Francês</strong>, atendendo pacientes nacionais e
+                        internacionais em Brasília.
+                    </p>
+                    <div class="about-specialties">
+                        <div class="specialty-tag">RPG Souchard</div>
+                        <div class="specialty-tag">Fisioterapia Bucomaxilofacial</div>
+                        <div class="specialty-tag">Acupuntura</div>
+                        <div class="specialty-tag">Neurociência do Movimento</div>
+                        <div class="specialty-tag">Dermatofuncional</div>
+                        <div class="specialty-tag">Terapia Manual</div>
+                    </div>
+                    <div class="about-education">
+                        <h4>Formação</h4>
+                        <div class="edu-item">Universidade Gama Filho <span>· Rio de Janeiro, 1995</span></div>
+                        <div class="edu-item">Instituto Philippe Souchard – RPG <span>· Rio de Janeiro, 1999</span>
+                        </div>
+                        <div class="edu-item">Pós-graduação em Acupuntura e Neurociência do Movimento</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRATAMENTOS -->
+    <section id="tratamentos">
+        <div class="container">
+            <div class="treatments-header fade-up">
+                <div>
+                    <div class="section-label">Tratamentos</div>
+                    <h2 class="section-title">Cuidado especializado para cada <em>condição</em></h2>
+                </div>
+                <p>Técnicas de ponta com atendimento individualizado cada protocolo desenhado para sua recuperação
+                    completa.</p>
+            </div>
+            <div class="treatments-list fade-up">
+
+                <div class="treatment-item">
+                    <div class="treat-num">01</div>
+                    <div class="treat-main">
+                        <div class="treatment-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4l3 3" />
+                            </svg>
+                        </div>
+                        <div class="treatment-name">RPG Souchard</div>
+                    </div>
+                    <div class="treat-detail">
+                        <p class="treatment-desc">Reeducação Postural Global original. Trata a causa das dores de
+                            coluna, escolioses, hérnias e desequilíbrios posturais através do alongamento das cadeias
+                            musculares com resultados duradouros.</p>
+                        <div class="treatment-conditions">
+                            <span class="condition-tag">Escoliose</span>
+                            <span class="condition-tag">Dor na coluna</span>
+                            <span class="condition-tag">Hérnia de disco</span>
+                            <span class="condition-tag">Lombalgia</span>
+                            <span class="condition-tag">Cervicalgia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-item">
+                    <div class="treat-num">02</div>
+                    <div class="treat-main">
+                        <div class="treatment-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                                <line x1="9" y1="9" x2="9.01" y2="9" />
+                                <line x1="15" y1="9" x2="15.01" y2="9" />
+                            </svg>
+                        </div>
+                        <div class="treatment-name">ATM / DTM</div>
+                    </div>
+                    <div class="treat-detail">
+                        <p class="treatment-desc">Fisioterapia Bucomaxilofacial especializada para bruxismo, mandíbula
+                            travada, dores na face e cefaleias tensionais relacionadas à articulação temporomandibular.
+                        </p>
+                        <div class="treatment-conditions">
+                            <span class="condition-tag">Bruxismo</span>
+                            <span class="condition-tag">Mandíbula travada</span>
+                            <span class="condition-tag">Dor facial</span>
+                            <span class="condition-tag">Cefaleia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-item">
+                    <div class="treat-num">03</div>
+                    <div class="treat-main">
+                        <div class="treatment-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <line x1="12" y1="2" x2="12" y2="22" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <div class="treatment-name">Acupuntura</div>
+                    </div>
+                    <div class="treat-detail">
+                        <p class="treatment-desc">Equilíbrio energético e alívio de pontos de gatilho para controle da
+                            dor crônica, insônia, ansiedade e bem-estar sistêmico. Integrada à abordagem
+                            neurocientífica.</p>
+                        <div class="treatment-conditions">
+                            <span class="condition-tag">Dor crônica</span>
+                            <span class="condition-tag">Fibromialgia</span>
+                            <span class="condition-tag">Ansiedade</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-item">
+                    <div class="treat-num">04</div>
+                    <div class="treat-main">
+                        <div class="treatment-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            </svg>
+                        </div>
+                        <div class="treatment-name">Dermatofuncional</div>
+                    </div>
+                    <div class="treat-detail">
+                        <p class="treatment-desc">Tratamentos especializados para recuperação tecidual, pós-operatório
+                            estético e cirúrgico, e estética baseada em saúde com protocolos científicos
+                            personalizados.</p>
+                        <div class="treatment-conditions">
+                            <span class="condition-tag">Pós-operatório</span>
+                            <span class="condition-tag">Cicatrizes</span>
+                            <span class="condition-tag">Saúde da pele</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="treatment-item">
+                    <div class="treat-num">05</div>
+                    <div class="treat-main">
+                        <div class="treatment-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M14 2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1v8a2 2 0 0 1-4 0v-8H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h6z" />
+                            </svg>
+                        </div>
+                        <div class="treatment-name">Terapia Manual &amp; Outros</div>
+                    </div>
+                    <div class="treat-detail">
+                        <p class="treatment-desc">Liberação miofascial, dry needling, ventosaterapia, eletroterapia,
+                            laserterapia, auriculoterapia e cinesioterapia recursos complementares para resultados
+                            completos.</p>
+                        <div class="treatment-conditions">
+                            <span class="condition-tag">Dry Needling</span>
+                            <span class="condition-tag">Ventosa</span>
+                            <span class="condition-tag">Laser</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONDIÇÕES -->
+    <section id="condicoes">
+        <div class="container">
+            <div class="conditions-header fade-up">
+                <div class="section-label">Condições atendidas</div>
+                <h2 class="section-title">Problemas que <em>tratamos</em></h2>
+                <p>Cada condição tratada com protocolo individualizado e foco na raiz do problema.</p>
+            </div>
+            <div class="conditions-cloud fade-up">
+                <span class="condition-pill highlight">Dor na coluna</span>
+                <span class="condition-pill highlight">Disfunção ATM</span>
+                <span class="condition-pill highlight">Escoliose</span>
+                <span class="condition-pill">Lombalgia</span>
+                <span class="condition-pill">Cervicalgia</span>
+                <span class="condition-pill">Hérnia de disco</span>
+                <span class="condition-pill">Fibromialgia</span>
+                <span class="condition-pill">Dor no calcanhar</span>
+                <span class="condition-pill">Esporão de calcanhar</span>
+                <span class="condition-pill">Cervicobraquialgia</span>
+                <span class="condition-pill">Torcicolo</span>
+                <span class="condition-pill">Cefaleia tensional</span>
+                <span class="condition-pill">Lordose</span>
+                <span class="condition-pill">Fasciite</span>
+                <span class="condition-pill">LER</span>
+                <span class="condition-pill">Doenças musculares</span>
+                <span class="condition-pill">Doenças musculoesqueléticas</span>
+                <span class="condition-pill">Limitação de mobilidade</span>
+                <span class="condition-pill">Anormalidades musculoesqueléticas</span>
+                <span class="condition-pill">Dor crônica</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANOS DE SAÚDE -->
+    <section id="planos">
+        <div class="container">
+            <div class="planos-header fade-up">
+                <div class="section-label">Convênios aceitos</div>
+                <h2 class="section-title">Planos de <em>saúde</em></h2>
+                <p>Atendemos os principais planos de saúde de Brasília. Verifique a cobertura do seu plano antes de agendar.</p>
+            </div>
+            <div class="planos-grid fade-up">
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">Postal Saúde</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">Saúde Caixa</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">GAMA Saúde</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">AFFEGO</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">Unafisco Saúde</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">PLAN ASSISTE</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">FUSEX</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">BACEN</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">Pró-Saúde (TJDFT)</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">SIS (Senado)</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">AAFBB</div>
+                </div>
+                <div class="plano-item">
+                    <div class="plano-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+                    <div class="plano-name">GDF Saúde</div>
+                </div>
+            </div>
+            <p class="planos-note fade-up">Não encontrou seu plano? Entre em contato — novos convênios são adicionados regularmente.</p>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais">
+        <div class="container">
+            <div class="diff-header fade-up">
+                <div>
+                    <div class="section-label">Por que escolher</div>
+                    <h2 class="section-title">Por que a Dra. Juliana <em>é diferente</em></h2>
+                </div>
+                <p>Uma abordagem que vai além do tratamento convencional integrando ciência, experiência e humanidade
+                    em cada sessão.</p>
+            </div>
+            <div class="diff-grid fade-up">
+                <div class="diff-card">
+                    <div class="diff-bg-num">01</div>
+                    <div class="diff-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                    </div>
+                    <div class="diff-stat">Causa</div>
+                    <div class="diff-title">Foco na origem</div>
+                    <p class="diff-desc">Não mascaramos sintomas. Investigamos a origem biomecânica e neurológica de
+                        cada desconforto para resultados duradouros.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-bg-num">02</div>
+                    <div class="diff-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                    </div>
+                    <div class="diff-stat">Holístico</div>
+                    <div class="diff-title">Visão integrativa</div>
+                    <p class="diff-desc">Corpo, postura, mente e neurologia integrados em cada sessão. O paciente é
+                        tratado como uma unidade funcional.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-bg-num">03</div>
+                    <div class="diff-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                    </div>
+                    <div class="diff-stat">20+</div>
+                    <div class="diff-title">Anos de experiência</div>
+                    <p class="diff-desc">Décadas de prática clínica e atualização constante nas técnicas mais avançadas
+                        RPG, Acupuntura, Neurociência.</p>
+                </div>
+                <div class="diff-card">
+                    <div class="diff-bg-num">04</div>
+                    <div class="diff-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>
+                    </div>
+                    <div class="diff-stat">100%</div>
+                    <div class="diff-title">Pontual e dedicada</div>
+                    <p class="diff-desc">Respeito total ao seu tempo. Atendimento exclusivo, sem pressa, com escuta
+                        ativa e atenção a cada detalhe clínico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="depoimentos">
+        <div class="container">
+            <div class="testimonials-header fade-up">
+                <div>
+                    <div class="section-label">Pacientes</div>
+                    <h2 class="section-title">O que dizem quem <em>se tratou</em></h2>
+                </div>
+                <p>Avaliação máxima verificada no Doctoralia histórias reais de recuperação e alívio.</p>
+            </div>
+            <div class="testimonials-grid fade-up">
+                <div class="testimonial-card featured-t">
+                    <span class="quote-mark">"</span>
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span
+                            class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <p class="testimonial-text">A terapia de RPG exige muito do profissional. Dra. Juliana além de
+                        competente e muito responsável, tem me trazido muito bem estar e equilíbrio. Saio das sessões
+                        leve, sem dor. Profissional especial em quem confio.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Paciente</div>
+                            <div class="author-label">Tratamento de RPG · Doctoralia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span
+                            class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <p class="testimonial-text">A Dra Juliana tem me ajudado muito a corrigir meus problemas de postura,
+                        demonstra domínio e técnica nas sessões de RPG, além de ser muito atenciosa e pontual. Indico a
+                        todos.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Paciente</div>
+                            <div class="author-label">RPG Souchard · Doctoralia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span
+                            class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <p class="testimonial-text">Excelente profissional! Super atenciosa e competente, além de ter uma
+                        experiência notável. Estou fazendo RPG e notei melhora desde a primeira sessão.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Paciente</div>
+                            <div class="author-label">RPG Souchard · Doctoralia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span
+                            class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <p class="testimonial-text">Muito competente, faz um trabalho com muita excelência! Observa cada
+                        detalhe e trata o paciente no geral, não somente a queixa específica. Analisa todos os exames.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Paciente</div>
+                            <div class="author-label">Doctoralia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span
+                            class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <p class="testimonial-text">Não tenho palavras pra agradecer o tratamento recebido sentir dor e
+                        receber alívio com a atenção da Dra. Juliana é uma benção!</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Paciente</div>
+                            <div class="author-label">Doctoralia</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span
+                            class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <p class="testimonial-text">A Dra. me passou segurança no protocolo adotado. Excelente profissional,
+                        muito atenciosa e pontual. O consultório é confortável e a localização é ótima.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div>
+                            <div class="author-name">Paciente</div>
+                            <div class="author-label">Doctoralia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-bar fade-up">
+                <div class="rating-score">5.0</div>
+                <div class="rating-detail">
+                    <div class="stars"><span class="star">★</span><span class="star">★</span><span
+                            class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+                    <p>Avaliação máxima pelos pacientes</p>
+                </div>
+                <div class="rating-source">Verificado no Doctoralia</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria">
+        <div class="container">
+            <div class="gallery-header fade-up">
+                <div>
+                    <div class="section-label">Estrutura</div>
+                    <h2 class="section-title">Nosso <em>consultório</em></h2>
+                </div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn gallery-prev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+                    </button>
+                    <button class="gallery-btn gallery-next" aria-label="Próximo">
+                        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-track-wrapper fade-up">
+            <div class="gallery-track" id="galleryTrack">
+                <div class="gallery-slide">
+                    <img src="consultorio.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+                <div class="gallery-slide">
+                    <img src="consultorio1.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+                <div class="gallery-slide">
+                    <img src="consultorio2.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+                <div class="gallery-slide">
+                    <img src="consultorio3.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+                <div class="gallery-slide">
+                    <img src="consultorio4.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+                <div class="gallery-slide">
+                    <img src="consultorio6.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+                <div class="gallery-slide">
+                    <img src="consultorio7.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+                <div class="gallery-slide">
+                    <img src="consultorio8.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                </div>
+            </div>
+        </div>
+        <div class="gallery-dots" id="galleryDots">
+            <button class="gallery-dot active"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+        </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO -->
+    <section id="localizacao">
+        <div class="container">
+            <div class="location-grid fade-up">
+                <div class="location-info">
+                    <div class="section-label">Onde nos encontrar</div>
+                    <h2 class="section-title" style="margin-bottom:2rem;">Localização <em>e contato</em></h2>
+                    <h3>Clínica de Fisioterapia Maluhy Magnino</h3>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>SCN QD 2, Liberty Mall, Torre B, Sala 805</strong><br />
+                            Brasília – Distrito Federal, 70712-904
+                        </div>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>+55 61 9829-18100</strong><br />
+                            WhatsApp para agendamentos
+                        </div>
+                    </div>
+                    <div class="location-detail">
+                        <div class="location-detail-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                            </svg>
+                        </div>
+                        <div>
+                            <strong>Telemedicina disponível</strong><br />
+                            Consultas online também
+                        </div>
+                    </div>
+                    <div style="margin-top:2rem;">
+                        <a href="https://wa.me/5561982918100" target="_blank" class="btn-primary"
+                            style="display:inline-flex;">
+                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            Agendar agora
+                        </a>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.0!2d-47.8842697!3d-15.7868690!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a3a57e88c38b9%3A0x7e8e51b0af0e4c6a!2sLiberty+Mall!5e0!3m2!1spt!2sbr!4v1700000000000!5m2!1spt!2sbr"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+        <div class="container">
+            <div class="cta-inner fade-up">
+                <div class="cta-text">
+                    <h2>Quer tratar a dor <em>do jeito certo?</em></h2>
+                    <p>Agende sua avaliação inicial e comece sua jornada de recuperação definitiva. Atendimento
+                        presencial em Brasília e teleconsulta disponível.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="https://wa.me/5561982918100" target="_blank" class="cta-wpp">
+                        <svg fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg>
+                        Agendar via WhatsApp
+                    </a>
+                    <div class="cta-phone">ou ligue: <a href="tel:+5561982918100">+55 61 9829-18100</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-logo">Dra. Juliana <span>Maluhy</span></div>
+                <p class="footer-tagline">Fisioterapeuta Especializada<br />Crefito: 30758-F · Membro
+                    SBRPG<br />Brasília – Distrito Federal</p>
+            </div>
+            <div>
+                <h5>Tratamentos</h5>
+                <ul>
+                    <li><a href="#tratamentos">RPG Souchard</a></li>
+                    <li><a href="#tratamentos">ATM / DTM</a></li>
+                    <li><a href="#tratamentos">Acupuntura</a></li>
+                    <li><a href="#tratamentos">Dermatofuncional</a></li>
+                    <li><a href="#tratamentos">Terapia Manual</a></li>
+                    <li><a href="#tratamentos">Teleconsulta</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Contato</h5>
+                <ul>
+                    <li><a href="https://wa.me/5561982918100">WhatsApp: +55 61 9829-18100</a></li>
+                    <li><a href="#localizacao">SCN QD 2, Liberty Mall, Torre B, Sala 805</a></li>
+                    <li><a href="#localizacao">Brasília – DF, 70712-904</a></li>
+                    <li><a href="https://www.doctoralia.com.br/juliana-maluhy-magnino/fisioterapeuta/brasilia"
+                            target="_blank">Doctoralia</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 Dra. Juliana Maluhy Magnino. Todos os direitos reservados.</span>
+            <span>Crefito 30758-F · Brasília, DF</span>
+        </div>
+    </footer>
+
+    <!-- WPP FLOAT -->
+    <a href="https://wa.me/5561982918100" target="_blank" class="wpp-float" aria-label="Falar no WhatsApp">
+        <svg fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.94 3.659 1.437 5.634 1.437h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <script>
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
+
+        // Gallery carousel
+        (function () {
+            const track = document.getElementById('galleryTrack');
+            if (!track) return;
+            const slides = track.querySelectorAll('.gallery-slide');
+            const dots = document.querySelectorAll('#galleryDots .gallery-dot');
+            let cur = 0;
+
+            function visibleCount() {
+                return window.innerWidth < 680 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+            }
+
+            function goTo(i) {
+                const max = slides.length - visibleCount();
+                cur = Math.max(0, Math.min(i, max));
+                const gap = 24;
+                const slideW = slides[0].offsetWidth + gap;
+                track.style.transform = 'translateX(-' + (cur * slideW) + 'px)';
+                dots.forEach((d, j) => d.classList.toggle('active', j === cur));
+            }
+
+            document.querySelector('.gallery-prev')?.addEventListener('click', () => goTo(cur - 1));
+            document.querySelector('.gallery-next')?.addEventListener('click', () => goTo(cur + 1));
+            dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
+            window.addEventListener('resize', () => goTo(cur), { passive: true });
+        })();
+
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    </script>
+</body>
+
+</html>
