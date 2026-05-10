@@ -611,61 +611,45 @@
             align-self: end;
         }
 
-        .treatments-list {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .treatment-item {
+        .treatments-primary {
             display: grid;
-            grid-template-columns: 72px 1fr 1fr;
-            gap: 2rem;
-            align-items: start;
-            padding: 2.8rem 0;
-            border-bottom: 1px solid var(--border);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .treat-card {
+            background: var(--white);
+            padding: 2.4rem;
+            border-top: 2px solid var(--teal);
             position: relative;
-            cursor: default;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
-        .treatment-item:first-child {
-            border-top: 1px solid var(--border);
-        }
-
-        .treatment-item::before {
+        .treat-card::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: var(--cream);
-            opacity: 0;
-            transition: opacity 0.3s;
-            margin: 0 -5vw;
+            background: linear-gradient(135deg, rgba(26, 122, 138, 0.03) 0%, transparent 60%);
+            pointer-events: none;
         }
 
-        .treatment-item:hover::before {
-            opacity: 1;
+        .treat-card:hover {
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            transform: translateY(-3px);
         }
 
-        .treat-num {
+        .treat-card-num {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 3.8rem;
+            font-size: 5rem;
             font-weight: 300;
-            color: rgba(0, 0, 0, 0.07);
+            color: rgba(0, 0, 0, 0.05);
             line-height: 1;
-            position: relative;
-            z-index: 1;
-            transition: color 0.3s;
+            margin-bottom: 1.2rem;
         }
 
-        .treatment-item:hover .treat-num {
-            color: rgba(26, 122, 138, 0.18);
-        }
-
-        .treat-main {
-            position: relative;
-            z-index: 1;
-        }
-
-        .treatment-icon {
+        .treat-card-icon {
             width: 40px;
             height: 40px;
             background: rgba(26, 122, 138, 0.07);
@@ -673,10 +657,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
-        .treatment-icon svg {
+        .treat-card-icon svg {
             width: 20px;
             height: 20px;
             stroke: var(--teal);
@@ -686,34 +670,30 @@
             stroke-linejoin: round;
         }
 
-        .treatment-name {
+        .treat-card-name {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--navy);
             font-weight: 400;
             line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
-        .treat-detail {
-            position: relative;
-            z-index: 1;
-        }
-
-        .treatment-desc {
-            font-size: 0.88rem;
+        .treat-card-desc {
+            font-size: 0.87rem;
             line-height: 1.8;
             color: var(--muted);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.4rem;
         }
 
-        .treatment-conditions {
+        .treat-card-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.4rem;
         }
 
-        .condition-tag {
-            font-size: 0.66rem;
+        .treat-tag {
+            font-size: 0.64rem;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             background: rgba(26, 122, 138, 0.06);
@@ -723,9 +703,59 @@
             border: 1px solid rgba(26, 122, 138, 0.12);
         }
 
+        .treatments-secondary {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .treats-also-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .treats-also-list {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .treat-also-chip {
+            font-size: 0.82rem;
+            color: var(--muted);
+            padding: 0.4rem 1.1rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            transition: all 0.2s;
+            cursor: default;
+        }
+
+        .treat-also-chip:hover {
+            border-color: rgba(26, 122, 138, 0.3);
+            color: var(--teal);
+        }
+
+        @media (max-width: 900px) {
+            .treatments-header {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .treatments-primary {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* CONDIÇÕES */
         #condicoes {
             background: var(--cream);
+            padding-bottom: 4rem;
         }
 
         .conditions-header {
@@ -1338,49 +1368,62 @@
             background: var(--white);
         }
 
-        .planos-header {
-            max-width: 620px;
-            margin-bottom: 3rem;
+        .planos-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.6fr;
+            gap: 5rem;
+            align-items: start;
         }
 
-        .planos-header p {
+        .planos-aside {
+            position: sticky;
+            top: 7rem;
+        }
+
+        .planos-aside p {
             margin-top: 1rem;
             color: var(--muted);
             font-size: 0.95rem;
             line-height: 1.8;
         }
 
+        .planos-note {
+            grid-column: 1 / -1;
+            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
         .planos-grid {
-            display: flex;
-            flex-wrap: wrap;
-            border-top: 1px solid var(--border);
-            border-left: 1px solid var(--border);
-            border-radius: 2px;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
         }
 
         .plano-item {
-            width: 25%;
             background: var(--white);
-            padding: 1.4rem 1.8rem;
+            padding: 1rem 1.1rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            gap: 0.7rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
             box-sizing: border-box;
-            transition: background 0.2s;
+            transition: all 0.2s ease;
+            cursor: default;
         }
 
         .plano-item:hover {
-            background: var(--ivory);
+            border-color: rgba(26, 122, 138, 0.4);
+            box-shadow: 0 4px 16px rgba(26, 122, 138, 0.08);
+            transform: translateY(-2px);
         }
 
         .plano-check {
-            width: 22px;
-            height: 22px;
-            border: 1.5px solid rgba(26, 122, 138, 0.3);
+            width: 20px;
+            height: 20px;
+            background: rgba(26, 122, 138, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1389,8 +1432,8 @@
         }
 
         .plano-check svg {
-            width: 10px;
-            height: 10px;
+            width: 9px;
+            height: 9px;
             stroke: var(--teal);
             fill: none;
             stroke-width: 2.5;
@@ -1399,27 +1442,31 @@
         }
 
         .plano-name {
-            font-size: 0.84rem;
+            font-size: 0.8rem;
             font-weight: 500;
             color: var(--navy);
-            line-height: 1.35;
+            line-height: 1.3;
         }
 
-        .planos-note {
-            font-size: 0.78rem;
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        @media (max-width: 900px) {
+            .planos-layout {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .planos-aside {
+                position: static;
+            }
+
+            .planos-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .planos-note::before {
-            content: '';
-            width: 4px;
-            height: 4px;
-            background: var(--teal);
-            border-radius: 50%;
-            flex-shrink: 0;
+        @media (max-width: 500px) {
+            .planos-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* GALERIA */
@@ -1456,8 +1503,13 @@
             transition: all 0.2s;
         }
 
-        .gallery-prev { left: max(1rem, 2vw); }
-        .gallery-next { right: max(1rem, 2vw); }
+        .gallery-prev {
+            left: max(1rem, 2vw);
+        }
+
+        .gallery-next {
+            right: max(1rem, 2vw);
+        }
 
         .gallery-btn:hover {
             background: var(--navy);
@@ -1843,133 +1895,67 @@
             <div class="treatments-header fade-up">
                 <div>
                     <div class="section-label">Tratamentos</div>
-                    <h2 class="section-title">Cuidado especializado para cada <em>condição</em></h2>
+                    <h2 class="section-title">Especialidades que nos <em>definem</em></h2>
                 </div>
-                <p>Técnicas de ponta com atendimento individualizado cada protocolo desenhado para sua recuperação
-                    completa.</p>
+                <p>Técnicas de ponta com atendimento individualizado — cada protocolo desenhado para sua recuperação completa.</p>
             </div>
-            <div class="treatments-list fade-up">
 
-                <div class="treatment-item">
-                    <div class="treat-num">01</div>
-                    <div class="treat-main">
-                        <div class="treatment-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="M12 8v4l3 3" />
-                            </svg>
-                        </div>
-                        <div class="treatment-name">RPG Souchard</div>
+            <div class="treatments-primary fade-up">
+                <div class="treat-card">
+                    <div class="treat-card-num">01</div>
+                    <div class="treat-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     </div>
-                    <div class="treat-detail">
-                        <p class="treatment-desc">Reeducação Postural Global original. Trata a causa das dores de
-                            coluna, escolioses, hérnias e desequilíbrios posturais através do alongamento das cadeias
-                            musculares com resultados duradouros.</p>
-                        <div class="treatment-conditions">
-                            <span class="condition-tag">Escoliose</span>
-                            <span class="condition-tag">Dor na coluna</span>
-                            <span class="condition-tag">Hérnia de disco</span>
-                            <span class="condition-tag">Lombalgia</span>
-                            <span class="condition-tag">Cervicalgia</span>
-                        </div>
+                    <div class="treat-card-name">RPG Souchard</div>
+                    <p class="treat-card-desc">Reeducação Postural Global original. Trata a causa das dores de coluna, escolioses, hérnias e desequilíbrios posturais através do alongamento das cadeias musculares com resultados duradouros.</p>
+                    <div class="treat-card-tags">
+                        <span class="treat-tag">Escoliose</span>
+                        <span class="treat-tag">Dor na coluna</span>
+                        <span class="treat-tag">Hérnia de disco</span>
+                        <span class="treat-tag">Lombalgia</span>
                     </div>
                 </div>
 
-                <div class="treatment-item">
-                    <div class="treat-num">02</div>
-                    <div class="treat-main">
-                        <div class="treatment-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
-                                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
-                                <line x1="9" y1="9" x2="9.01" y2="9" />
-                                <line x1="15" y1="9" x2="15.01" y2="9" />
-                            </svg>
-                        </div>
-                        <div class="treatment-name">ATM / DTM</div>
+                <div class="treat-card">
+                    <div class="treat-card-num">02</div>
+                    <div class="treat-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M6 20c0-2.5 2.5-4 6-4s6 1.5 6 4"/></svg>
                     </div>
-                    <div class="treat-detail">
-                        <p class="treatment-desc">Fisioterapia Bucomaxilofacial especializada para bruxismo, mandíbula
-                            travada, dores na face e cefaleias tensionais relacionadas à articulação temporomandibular.
-                        </p>
-                        <div class="treatment-conditions">
-                            <span class="condition-tag">Bruxismo</span>
-                            <span class="condition-tag">Mandíbula travada</span>
-                            <span class="condition-tag">Dor facial</span>
-                            <span class="condition-tag">Cefaleia</span>
-                        </div>
+                    <div class="treat-card-name">ATM / DTM</div>
+                    <p class="treat-card-desc">Fisioterapia Bucomaxilofacial especializada para bruxismo, mandíbula travada, dores na face e cefaleias tensionais relacionadas à articulação temporomandibular.</p>
+                    <div class="treat-card-tags">
+                        <span class="treat-tag">Bruxismo</span>
+                        <span class="treat-tag">Mandíbula travada</span>
+                        <span class="treat-tag">Dor facial</span>
+                        <span class="treat-tag">Cefaleia</span>
                     </div>
                 </div>
 
-                <div class="treatment-item">
-                    <div class="treat-num">03</div>
-                    <div class="treat-main">
-                        <div class="treatment-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <line x1="12" y1="2" x2="12" y2="22" />
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                            </svg>
-                        </div>
-                        <div class="treatment-name">Acupuntura</div>
+                <div class="treat-card">
+                    <div class="treat-card-num">03</div>
+                    <div class="treat-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v0"/><path d="M14 10V4a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2v0a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
                     </div>
-                    <div class="treat-detail">
-                        <p class="treatment-desc">Equilíbrio energético e alívio de pontos de gatilho para controle da
-                            dor crônica, insônia, ansiedade e bem-estar sistêmico. Integrada à abordagem
-                            neurocientífica.</p>
-                        <div class="treatment-conditions">
-                            <span class="condition-tag">Dor crônica</span>
-                            <span class="condition-tag">Fibromialgia</span>
-                            <span class="condition-tag">Ansiedade</span>
-                        </div>
+                    <div class="treat-card-name">Terapia Manual</div>
+                    <p class="treat-card-desc">Liberação miofascial, mobilização articular e técnicas manuais avançadas para restaurar movimento, aliviar dor e recuperar funcionalidade com resultados imediatos.</p>
+                    <div class="treat-card-tags">
+                        <span class="treat-tag">Liberação miofascial</span>
+                        <span class="treat-tag">Dry Needling</span>
+                        <span class="treat-tag">Ventosaterapia</span>
                     </div>
                 </div>
+            </div>
 
-                <div class="treatment-item">
-                    <div class="treat-num">04</div>
-                    <div class="treat-main">
-                        <div class="treatment-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                            </svg>
-                        </div>
-                        <div class="treatment-name">Dermatofuncional</div>
-                    </div>
-                    <div class="treat-detail">
-                        <p class="treatment-desc">Tratamentos especializados para recuperação tecidual, pós-operatório
-                            estético e cirúrgico, e estética baseada em saúde com protocolos científicos
-                            personalizados.</p>
-                        <div class="treatment-conditions">
-                            <span class="condition-tag">Pós-operatório</span>
-                            <span class="condition-tag">Cicatrizes</span>
-                            <span class="condition-tag">Saúde da pele</span>
-                        </div>
-                    </div>
+            <div class="treatments-secondary fade-up">
+                <span class="treats-also-label">Também oferecemos</span>
+                <div class="treats-also-list">
+                    <span class="treat-also-chip">Acupuntura</span>
+                    <span class="treat-also-chip">Dermatofuncional</span>
+                    <span class="treat-also-chip">Eletroterapia</span>
+                    <span class="treat-also-chip">Laserterapia</span>
+                    <span class="treat-also-chip">Auriculoterapia</span>
+                    <span class="treat-also-chip">Teleconsulta</span>
                 </div>
-
-                <div class="treatment-item">
-                    <div class="treat-num">05</div>
-                    <div class="treat-main">
-                        <div class="treatment-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M14 2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-1v8a2 2 0 0 1-4 0v-8H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h6z" />
-                            </svg>
-                        </div>
-                        <div class="treatment-name">Terapia Manual &amp; Outros</div>
-                    </div>
-                    <div class="treat-detail">
-                        <p class="treatment-desc">Liberação miofascial, dry needling, ventosaterapia, eletroterapia,
-                            laserterapia, auriculoterapia e cinesioterapia recursos complementares para resultados
-                            completos.</p>
-                        <div class="treatment-conditions">
-                            <span class="condition-tag">Dry Needling</span>
-                            <span class="condition-tag">Ventosa</span>
-                            <span class="condition-tag">Laser</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -2010,76 +1996,71 @@
     <!-- PLANOS DE SAÚDE -->
     <section id="planos">
         <div class="container">
-            <div class="planos-header fade-up">
-                <div class="section-label">Convênios aceitos</div>
-                <h2 class="section-title">Planos de <em>saúde</em></h2>
-                <p>Atendemos os principais planos de saúde de Brasília. Verifique a cobertura do seu plano antes de
-                    agendar.</p>
-            </div>
-            <div class="planos-grid fade-up">
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">Postal Saúde</div>
+            <div class="planos-layout">
+                <div class="planos-aside fade-up">
+                    <div class="section-label">Convênios aceitos</div>
+                    <h2 class="section-title">Planos de <em>saúde</em></h2>
+                    <p>Atendemos os principais planos de saúde de Brasília. Verifique a cobertura do seu plano antes de
+                        agendar.</p>
                 </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">Saúde Caixa</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">GAMA Saúde</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">AFFEGO</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">Unafisco Saúde</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">PLAN ASSISTE</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">BACEN</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">Pró-Saúde (TJDFT)</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">SIS (Senado)</div>
-                </div>
-                <div class="plano-item">
-                    <div class="plano-check"><svg viewBox="0 0 12 12">
-                            <polyline points="2,6 5,9 10,3" />
-                        </svg></div>
-                    <div class="plano-name">AAFBB</div>
+                <div class="planos-grid fade-up">
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">Saúde Caixa</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">GAMA Saúde</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">AFFEGO</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">Unafisco Saúde</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">PLAN ASSISTE</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">BACEN</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">Pró-Saúde (TJDFT)</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">SIS (Senado)</div>
+                    </div>
+                    <div class="plano-item">
+                        <div class="plano-check"><svg viewBox="0 0 12 12">
+                                <polyline points="2,6 5,9 10,3" />
+                            </svg></div>
+                        <div class="plano-name">AAFBB</div>
+                    </div>
+                    <p class="planos-note">* Não encontrou seu plano? Entre em contato — novos convênios são adicionados regularmente.</p>
                 </div>
             </div>
-            <p class="planos-note fade-up">Não encontrou seu plano? Entre em contato — novos convênios são adicionados
-                regularmente.</p>
         </div>
     </section>
 
@@ -2278,27 +2259,55 @@
         </div>
         <div class="gallery-carousel-wrap fade-up">
             <button class="gallery-btn gallery-prev" aria-label="Anterior">
-                <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6" /></svg>
+                <svg viewBox="0 0 24 24">
+                    <polyline points="15,18 9,12 15,6" />
+                </svg>
             </button>
             <button class="gallery-btn gallery-next" aria-label="Próximo">
-                <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6" /></svg>
+                <svg viewBox="0 0 24 24">
+                    <polyline points="9,18 15,12 9,6" />
+                </svg>
             </button>
             <div class="gallery-track-wrapper">
-            <div class="gallery-track" id="galleryTrack">
-                <div class="gallery-slide">
-                    <img src="consultorio.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                <div class="gallery-track" id="galleryTrack">
+                    <div class="gallery-slide">
+                        <img src="consultorio.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio1.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio2.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio3.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio4.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio5.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio6.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio7.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="consultorio8.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
+                    </div>
                 </div>
-                <div class="gallery-slide">
-                    <img src="consultorio1.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
-                </div>
-                <div class="gallery-slide">
-                    <img src="consultorio2.jpg" alt="Consultório Dra. Juliana Maluhy" loading="lazy" />
-                </div>
-            </div>
             </div><!-- /gallery-track-wrapper -->
         </div><!-- /gallery-carousel-wrap -->
         <div class="gallery-dots" id="galleryDots">
             <button class="gallery-dot active"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
+            <button class="gallery-dot"></button>
             <button class="gallery-dot"></button>
             <button class="gallery-dot"></button>
         </div>
